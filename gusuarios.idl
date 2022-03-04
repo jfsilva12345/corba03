@@ -1,0 +1,25 @@
+module sop_corba{
+    interface AdmCllbckInt{
+        void notificar(in string nombreCompleto, in long id );
+    };
+    struct personalDTO{
+        string tipo_id;
+        long id;
+        string nombreCompleto;
+        string ocupacion;
+        string usuario;
+        string clave;
+    };
+
+    struct credencialDTO{
+        string usuario;
+        string clave;
+    };
+
+    interface GestionPersonalInt{
+        void registrarPersonal(in personalDTO objPersonal);
+        boolean consultarPersonal(in long id, out personalDTO objPersonal) ;
+        long abrirSesion(in credencialDTO objCredencial);
+        void registrarCallback(in AdmCllbckInt objCllbck) ;
+    };
+};
